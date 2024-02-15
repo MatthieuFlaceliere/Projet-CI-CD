@@ -4,11 +4,15 @@
   "description": "Simple web application",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./app",
     "start": "node index.js"
   },
   "author": "Yohann DUBOEUF/Matthieu FLACELIERE",
   "license": "ISC",
   "engines": {
     "node": "20"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }
