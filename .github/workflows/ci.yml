@@ -1,0 +1,45 @@
+name: Github action for CI
+on:
+  - pull_request
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+  build_docker:
+    runs-on: ubuntu-22.04
+    env:
+      IMAGE_NAME: "webapp"
+      CONTAINER_NAME: "webapp"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker image build --tag="${IMAGE_NAME}" ./
+      - name: Run Docker container
+        run: docker container run --name="${CONTAINER_NAME}" --detach --publish 3000:3000 "${IMAGE_NAME}"
+      - name: Wait for container startup
+        run: sleep 5
+      - name: Test HTTP response
+        run: |
+          response=$(curl -s http://127.0.0.1:3000/)
+          if [[ $response == *"hello world"* ]]; then
+            echo "Test passed: Response is 'hello world'"
+            exit 0
+          else
+            echo "Test failed: Unexpected response"
+            exit 1
+          fi
+      - name: Stop Docker container
+        run: docker container stop "${CONTAINER_NAME}"
+
+
+    
