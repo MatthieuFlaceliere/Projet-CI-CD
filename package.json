@@ -1,0 +1,14 @@
+{
+  "name": "projet-ci-cd",
+  "version": "1.0.0",
+  "description": "Simple web application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Yohann DUBOEUF/Matthieu FLACELIERE",
+  "license": "ISC",
+  "engines": {
+    "node": "20"
+  }
+}
