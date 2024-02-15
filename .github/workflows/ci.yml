@@ -15,6 +15,10 @@ jobs:
         run: npm install
       - name: Lint
         run: npm run lint
+      - name: Hadolint lint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
   build_docker:
     runs-on: ubuntu-22.04
     env:
@@ -32,7 +36,7 @@ jobs:
         run: |
           response=$(curl -s http://127.0.0.1:3000/)
           if [[ $response == *"Hello World"* ]]; then
-            echo "Test passed: Response is 'hello world'"
+            echo "Test passed: Response is 'Hello World'"
             exit 0
           else
             echo "Test failed: Unexpected response"
