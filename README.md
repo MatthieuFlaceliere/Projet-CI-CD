@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is the best Web Application ever. 😎
+This project is the best Web Application ever. ![Icon](./asset/logo.ico)
 
 ## Configuration
 
