@@ -4,7 +4,7 @@
   "description": "Simple web application",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./app",
+    "lint": "eslint",
     "start": "node index.js"
   },
   "author": "Yohann DUBOEUF/Matthieu FLACELIERE",
