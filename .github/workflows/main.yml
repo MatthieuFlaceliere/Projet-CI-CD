@@ -55,6 +55,7 @@ jobs:
   deploy_to_dockerhub:
     runs-on: ubuntu-22.04
     needs: [lint, build_docker]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Test
         run: echo "Test"
