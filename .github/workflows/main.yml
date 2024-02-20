@@ -29,6 +29,7 @@ jobs:
           dockerfile: Dockerfile
   build_docker:
     runs-on: ubuntu-22.04
+    needs: [lint]
     env:
       IMAGE_NAME: "webapp"
       CONTAINER_NAME: "webapp"
