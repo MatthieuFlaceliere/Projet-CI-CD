@@ -54,7 +54,8 @@ jobs:
   deploy_to_dockerhub:
     runs-on: ubuntu-22.04
     needs: [lint, build_docker]
-    - name: Test
-      run: echo "Test"
+    steps:
+      - name: Test
+        run: echo "Test"
     
     
